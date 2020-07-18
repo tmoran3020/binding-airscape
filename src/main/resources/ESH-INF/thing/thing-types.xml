@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="airscape"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
+	<thing-type id="fan">
+		<label>Whole House Fan</label>
+		<description>Airscape whole house fan</description>
+
+		<channels>
+			<channel id="fanControl" typeId="fanControl" />
+			<channel id="speed" typeId="speed" />
+			<channel id="timeRemaining" typeId="timeRemaining" />
+			<channel id="addOneHour" typeId="addOneHour" />
+			<channel id="atticTemperature" typeId="atticTemperature" />
+			<channel id="insideTemperature" typeId="insideTemperature" />
+			<channel id="outsideTemperature" typeId="outsideTemperature" />
+			<channel id="cfm" typeId="cfm" />
+			<channel id="power" typeId="power" />
+			<channel id="model" typeId="model" />
+			<channel id="softwareVersion" typeId="softwareVersion" />
+			<channel id="interlock1" typeId="interlock1" />
+			<channel id="interlock2" typeId="interlock2" />
+			<channel id="macAddress" typeId="macAddress" />
+			<channel id="doorInProcess" typeId="doorInProcess" />
+		</channels>
+
+		<config-description>
+			<parameter name="ipAddress" type="text" required="true">
+				<label>IP Address</label>
+				<description>This is the ip address for the airscape fan gen 2 control.</description>
+			</parameter>
+			<parameter name="pollingInterval" type="integer" required="false">
+				<label>Polling Interval</label>
+				<description>Polling interval, in seconds. Optional - defaults to 30 secs if not specified.</description>
+			</parameter>
+		</config-description>
+
+	</thing-type>
+
+	<channel-type id="fanControl">
+		<item-type>Rollershutter</item-type>
+		<label>Fan control</label>
+		<description>Control speed of fan - up / down / stop.</description>
+	</channel-type>
+	<channel-type id="speed">
+		<item-type>Number</item-type>
+		<label>Fan speed</label>
+		<description>Fan speed 0-10 (0 being off, 10 being highest)</description>
+	</channel-type>
+	<channel-type id="timeRemaining">
+		<item-type>Number</item-type>
+		<label>Time remaining</label>
+		<description>Time remaining before fan turns off automatically, in minutes. 0 means feature is off - fan will run indefinitely.</description>
+	</channel-type>
+	<channel-type id="addOneHour">
+		<item-type>Switch</item-type>
+		<label>Add one hour</label>
+		<description>Adds one hour of time to the time remaining.</description>
+	</channel-type>
+	<channel-type id="atticTemperature">
+		<item-type>Number</item-type>
+		<label>Attic temperature</label>
+		<description>Attic temperature, in degrees F. If not equipped, will return -99</description>
+	</channel-type>
+	<channel-type id="insideTemperature">
+		<item-type>Number</item-type>
+		<label>Inside temperature</label>
+		<description>Inside temperature, in degrees F. If not equipped, will return -99</description>
+	</channel-type>
+	<channel-type id="outsideTemperature">
+		<item-type>Number</item-type>
+		<label>Outside temperature</label>
+		<description>Outside temperature, in degrees F. If not equipped, will return -99</description>
+	</channel-type>
+	<channel-type id="cfm">
+		<item-type>Number</item-type>
+		<label>CFM</label>
+		<description>Airflow in CFM (Cubic Feet per Minute)</description>
+	</channel-type>
+	<channel-type id="power">
+		<item-type>Number</item-type>
+		<label>Power</label>
+		<description>Power consumption of fan, in Watts</description>
+	</channel-type>
+	<channel-type id="model">
+		<item-type>String</item-type>
+		<label>Model</label>
+		<description>Model of fan</description>
+	</channel-type>
+	<channel-type id="softwareVersion">
+		<item-type>String</item-type>
+		<label>Software version</label>
+		<description>Software version number</description>
+	</channel-type>
+	<channel-type id="interlock1">
+		<item-type>Contact</item-type>
+		<label>Interlock 1</label>
+		<description>State of interlock1. If open, fan will shut off. Usually used in fire alarm and other emergency situations.</description>
+	</channel-type>
+	<channel-type id="interlock2">
+		<item-type>Contact</item-type>
+	<label>Interlock 2</label>
+	<description>State of interlock1. If open, fan will shut off. Usually used in fire alarm and other emergency situations.</description>
+	</channel-type>
+	<channel-type id="macAddress">
+		<item-type>String</item-type>
+		<label>Mac address</label>
+		<description>Mac address of the fan controller</description>
+	</channel-type>
+	<channel-type id="doorInProcess">
+		<item-type>Contact</item-type>
+		<label>Door in process</label>
+		<description>Open if the door is currently opening. Note open/closed does NOT refer to the state of the door but rather if the door is currently opening.</description>
+	</channel-type>
+</thing:thing-descriptions>
