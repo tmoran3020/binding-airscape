@@ -88,4 +88,5 @@ sitemap airscape label="Main Menu" {
 ## Notes
 
 * If system is not equipped with optional temperature sensors, it will return -99 for these values.
+* The "rollershutter" type is a bit odd for a ... non-rollershutter. However the UP/DOWN/STOP actions almost perfectly correspond to how Airscape controls work.
 * There is no "ON" function - from the off state, turn the speed UP. The reverse does not work though - if you go DOWN from 1, it will stay at speed 1 and not turn off the fan. This is how the API is implemented by Airscape.
